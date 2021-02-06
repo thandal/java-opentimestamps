@@ -1,24 +1,19 @@
 plugins {
     id 'java-library'
-    id 'maven'
 }
 
-version = "1.20"
+sourceSets {
+    main {
+        java {
+            exclude '**/OtsCli.java'
+        }
+    }
+}
 
 dependencies {
-    testImplementation 'junit:junit:4.13.1'
+    implementation 'junit:junit:4.13.1'
     implementation 'org.json:json:20190722'
-//    implementation 'commons-cli:1.4'
     implementation 'org.bitcoinj:bitcoinj-core:0.14.7'
-    implementation 'org.slf4j:slf4j-simple:1.7.29'
-    implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.2'
 }
 
 ext.moduleName = 'com.eternitywall.ots'
-
-jar {
-    inputs.property("moduleName", moduleName)
-    manifest {
-        attributes 'Automatic-Module-Name': moduleName
-    }
-}
